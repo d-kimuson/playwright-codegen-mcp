@@ -10,18 +10,28 @@
     "fix:biome-format": "biome format --write .",
     "fix:biome-lint": "biome check --write .",
     "typecheck": "tsc --noEmit",
-    "build": "esbuild ./src/index.ts --bundle --platform=node --packages=external --format=esm --outdir=dist --sourcemap"
+    "build": "esbuild ./src/index.ts --bundle --platform=node --packages=external --format=esm --outdir=dist --sourcemap",
+    "generate:zod-schema": "tsx ./src/scripts/generate-zod-schema.ts"
   },
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.17.3"
+    "@modelcontextprotocol/sdk": "^1.17.3",
+    "json-schema-to-zod": "^2.6.1",
+    "playwright-core": "^1.55.0",
+    "ulid": "^3.0.1",
+    "ws": "^8.18.3",
+    "yaml": "^2.8.1",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.2.0",
     "@tsconfig/strictest": "^2.0.5",
     "@types/node": "^24.3.0",
+    "@types/ws": "^8.18.1",
     "esbuild": "^0.25.9",
     "npm-run-all2": "^8.0.4",
+    "playwright": "^1.55.0",
+    "tsx": "^4.20.4",
     "typescript": "^5.9.2"
   }
 }

@@ -2,6 +2,7 @@
   "extends": "@tsconfig/strictest/tsconfig.json",
   "compilerOptions": {
     // module resolution
+    "target": "ES2022",
     "module": "ESNext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
