@@ -1,0 +1,16 @@
+{
+  "extends": "@tsconfig/strictest/tsconfig.json",
+  "compilerOptions": {
+    // module resolution
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+
+    // transpile,
+    "noEmit": true,
+
+    // typecheck
+    "exactOptionalPropertyTypes": false
+  },
+  "include": ["src"]
+}
