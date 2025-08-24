@@ -2,6 +2,9 @@
   "name": "playwright-codegen-mcp",
   "version": "0.0.0",
   "type": "module",
+  "bin": {
+    "playwright-codegen-mcp": "dist/index.js"
+  },
   "scripts": {
     "lint": "run-s 'lint:*'",
     "lint:biome-format": "biome format .",
