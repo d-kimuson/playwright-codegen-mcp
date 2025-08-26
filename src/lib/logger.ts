@@ -24,7 +24,7 @@ const printLog = (level: LogLevel, message: string, data: unknown) => {
     logColor(level) +
       `[${level.toUpperCase()}] ${message}` +
       (data ? `\n${JSON.stringify(data, null, 2)}` : "") +
-      "\n"
+      "\n",
   );
 };
 
@@ -49,7 +49,7 @@ export const logger: Logger = {
     printLog(
       "error",
       message,
-      data && data instanceof Error ? serializeError(data) : data
+      data && data instanceof Error ? serializeError(data) : data,
     );
   },
   warn: (message, data) => {

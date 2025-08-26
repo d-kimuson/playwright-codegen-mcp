@@ -1,10 +1,9 @@
-import { randomBytes } from "node:crypto";
 import { spawn } from "node:child_process";
+import { randomBytes } from "node:crypto";
 import { logger } from "../lib/logger";
 
 export const startPlaywrightServer = async (): Promise<{
   wsEndpoint: string;
-  // cdpEndpoint: string;
 }> => {
   logger.info("🚀 Playwright run-server を起動中...");
 
@@ -22,7 +21,7 @@ export const startPlaywrightServer = async (): Promise<{
   });
 
   serverProcess.stderr?.on("data", (data) => {
-    console.error("🔴 Server Error:", data.toString());
+    logger.error(`🔴 Server Error: ${data.toString()}`);
   });
 
   return new Promise((resolve, reject) => {

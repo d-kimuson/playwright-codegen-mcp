@@ -1,6 +1,6 @@
 import WebSocket from "ws";
-import type { ProtocolRequest, ProtocolResponse } from "./types";
 import { logger } from "../lib/logger";
+import type { ProtocolRequest, ProtocolResponse } from "./types";
 
 export const createWebSocketClient = () => {
   let wsCache: WebSocket | undefined;
@@ -43,7 +43,7 @@ export const createWebSocketClient = () => {
 
   const setOnMessage = (
     method: string,
-    callback: (params: Record<string, unknown>) => void | Promise<void>
+    callback: (params: Record<string, unknown>) => void | Promise<void>,
   ) => {
     messageHandlers.push({ method, callback });
   };
@@ -61,9 +61,9 @@ export const createWebSocketClient = () => {
 
       callbacks.delete(message.id);
       if (message.error) {
-        console.error("❌ サーバーエラー:", message.error);
+        logger.error(`❌ サーバーエラー: ${message.error}`);
         const error = new Error(
-          message.error.message || JSON.stringify(message.error)
+          message.error.message || JSON.stringify(message.error),
         );
         callback.reject(error);
       } else {
@@ -78,7 +78,7 @@ export const createWebSocketClient = () => {
     logger.info(`📡 イベント受信: ${message.method}`, message.params);
 
     const handlers = messageHandlers.filter(
-      (handler) => handler.method === message.method
+      (handler) => handler.method === message.method,
     );
 
     for (const handler of handlers) {
@@ -100,8 +100,8 @@ export const createWebSocketClient = () => {
       });
 
       ws().addEventListener("error", (event) => {
-        console.error("❌ WebSocket接続エラー:", event.message);
-        reject(new Error("WebSocket error: " + event.message));
+        logger.error(`❌ WebSocket接続エラー: ${event.message}`);
+        reject(new Error(`WebSocket error: ${event.message}`));
       });
 
       ws().addEventListener("message", (event) => {
@@ -109,7 +109,7 @@ export const createWebSocketClient = () => {
           const message: ProtocolResponse = JSON.parse(event.data.toString());
           handleMessage(message);
         } catch (e) {
-          console.error("❌ メッセージパースエラー:", e);
+          logger.error(`❌ メッセージパースエラー: ${e}`);
           ws().close();
         }
       });
@@ -117,7 +117,7 @@ export const createWebSocketClient = () => {
       ws().addEventListener("close", (event) => {
         logger.info(
           "🔌 WebSocket接続が閉じられました",
-          JSON.stringify(event, null, 2)
+          JSON.stringify(event, null, 2),
         );
       });
     });

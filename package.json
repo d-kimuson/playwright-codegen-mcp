@@ -1,6 +1,7 @@
 {
   "name": "playwright-codegen-mcp",
   "version": "0.0.0",
+  "description": "Model Context Protocol (MCP) server that provides Playwright browser automation tools for AI assistants",
   "type": "module",
   "bin": {
     "playwright-codegen-mcp": "dist/index.js"
@@ -18,6 +19,7 @@
   "packageManager": "pnpm@10.11.0",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.17.3",
+    "commander": "^14.0.0",
     "playwright-core": "^1.55.0",
     "ulid": "^3.0.1",
     "ws": "^8.18.3",

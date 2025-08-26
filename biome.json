@@ -7,7 +7,7 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "includes": ["**", "!**/*.generated.*"]
+    "includes": ["**", "!**/*.generated.*", "!dist"]
   },
   "formatter": {
     "enabled": true,
@@ -17,7 +17,10 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noConsole": "error"
+      }
     }
   },
   "javascript": {

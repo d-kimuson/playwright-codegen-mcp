@@ -23,7 +23,19 @@ By using this MCP server, LLM agents can automatically perform the following tas
       "command": "npx",
       "args": [
         "-y",
-        "github:d-kimuson/playwright-codegen-mcp"
+        "github:d-kimuson/playwright-codegen-mcp",
+        // optional bellow
+        "--default-storage-state",
+        "/path/to/your-state-file.json"
+      ],
+      "env": {}
+    },
+    "playwright": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
       ],
       "env": {}
     }
